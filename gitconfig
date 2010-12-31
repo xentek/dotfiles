@@ -1,0 +1,14 @@
+[alias]
+	commit = ci
+	ci = commit
+	co = checkout
+	st = status
+	info = status
+[user]
+	name = Eric Marden
+	email = eric@xentek.net
+[core]
+	excludesfile = /Users/xentek/.gitignore
+[github]
+	user = xentek
+	token = b7feed758c325250f141045d1b0b95cc
