@@ -11,6 +11,8 @@ export PS1="${GREEN}%m${NORM}:${BLUE}%~${NORM}$ "
 export RPROMPT="XENTEK"
 export XDEBUG_CONFIG="idekey=xentek"
 export PERL5LIB="/opt/local/lib/perl5/site_perl/5.8.9"
+export ACK_PAGER="/usr/bin/less -R"
+export LANG=en_US.UTF-8
 
 # HELPFUL
 alias hosts='mate /etc/hosts'
