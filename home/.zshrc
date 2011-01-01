@@ -7,6 +7,10 @@ BLUE="%{"$'\033[01;34m'"%}"
 BOLD="%{"$'\033[01;39m'"%}"
 NORM="%{"$'\033[00m'"%}"
 
+export PATH=~/bin:/opt/local/bin:/opt/local/sbin:/opt/local/apache2/bin:$PATH
+export MANPATH="/usr/local/share/man:$MANPATH"
+export INFOPATH="/usr/local/share/info:$INFOPATH"
+
 export PS1="${GREEN}%m${NORM}:${BLUE}%~${NORM}$ "
 export RPROMPT="XENTEK"
 export XDEBUG_CONFIG="idekey=xentek"
