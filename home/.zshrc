@@ -1,3 +1,13 @@
+# The Basics
+: ${HOME=~}
+: ${LOGNAME=$(id -un)}
+: ${UNAME=$(uname)}
+: ${HOSTFILE=~/.ssh/known_hosts}
+
+# Terminal Options
+set -o notify # notify of bg job completion immediately
+umask 0022 # dirs will be 775, files 664
+
 # ENVIRONMENT STUFF
 BLACK="%{"$'\033[01;30m'"%}"
 GREEN="%{"$'\033[01;32m'"%}"
@@ -7,16 +17,30 @@ BLUE="%{"$'\033[01;34m'"%}"
 BOLD="%{"$'\033[01;39m'"%}"
 NORM="%{"$'\033[00m'"%}"
 
-export PATH=~/bin:/opt/local/bin:/opt/local/sbin:/opt/local/apache2/bin:$PATH
+export PS1="${GREEN}%m${NORM}:${BLUE}%~${NORM}$ "
+export XDEBUG_CONFIG="idekey=xentek"
+export LANG=en_US.UTF-8
+
+# PATH
+export PATH=$PATH
+# put ~/bin on PATH if you have it
+test -d "$HOME/bin" &&
+PATH="$HOME/bin:$PATH"
+
 export MANPATH="/usr/local/share/man:$MANPATH"
 export INFOPATH="/usr/local/share/info:$INFOPATH"
 
-export PS1="${GREEN}%m${NORM}:${BLUE}%~${NORM}$ "
-export RPROMPT="XENTEK"
-export XDEBUG_CONFIG="idekey=xentek"
-export PERL5LIB="/opt/local/lib/perl5/site_perl/5.8.9"
-export ACK_PAGER="/usr/bin/less -R"
-export LANG=en_US.UTF-8
+# PAGER
+if test -n "$(command -v less)" ; then
+    PAGER="less -FirSwX"
+    MANPAGER="less -FiRswX"
+	ACK_PAGER="less -FiRswX"
+else
+    PAGER=more
+    MANPAGER="$PAGER"
+	ACK_PAGER="$PAGER"
+fi
+export PAGER MANPAGER ACK_PAGER
 
 # HELPFUL
 alias hosts='mate /etc/hosts'
@@ -26,8 +50,14 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias sshkey='cat ~/.ssh/id_rsa.pub | pbcopy'
 alias wpfetch='wget http://wordpress.org/latest.tar.gz && tar xzvf ./latest.tar.gz && rm -f ./latest.tar.gz'
 alias wptrunk='svn export http://svn.automattic.com/wordpress-mu/trunk/ && mv trunk/* . && rm -rf trunk'
-alias dbg='open /Applications/MacGDBp.app'
-alias imsize='sips -g pixelWidth -g pixelHeight'
+
+# LS
+alias ls="ls -F"
+alias l="ls -lAh"
+alias ll="ls -l"
+alias la='ls -A'
+
+# GREP
 
 # SSH - XENTEK
 alias hostedbyxentek='ssh 67.23.32.231'
@@ -44,22 +74,59 @@ alias orb='ssh web.orb.hostedbyxentek.net'
 alias jj="ssh 67.23.32.248"
 alias bpdev="ssh 69.164.205.135"
 alias bp="ssh 69.164.202.104"
-alias asa="ssh -i /Users/xentek/.ssh/asa_slice -p 16885 deploy@173.203.89.165"
-alias asaqa="ssh -i /Users/xentek/.ssh/asa_slice -p 16885 deploy@184.106.206.94"
 
 # SSH - Clients
 alias adsblog='ssh 209.20.76.164'
+alias asa="ssh -i /Users/xentek/.ssh/asa_slice -p 16885 deploy@173.203.89.165"
+alias asaqa="ssh -i /Users/xentek/.ssh/asa_slice -p 16885 deploy@184.106.206.94"
 
-# DNS
-alias syncdns="cd /Users/xentek/Sites/dns-new/dns && rm -rf /Users/xentek/Sites/dns-new/dns/env.xentek /Users/xentek/Sites/dns-new/dns/env.slave && /Users/xentek/Sites/dns-new/dns/compile-dns.pl xentek && /Users/xentek/Sites/dns-new/dns/compile-dns.pl slave && rsync -avHS env.xentek 67.23.32.231:~ && rsync -avHS env.slave 174.143.252.196:~"
+
+# OSX Only
+if [ "$UNAME" = Darwin ]; then
+    # put ports on the paths if /opt/local exists
+    test -x /opt/local -a ! -L /opt/local && {
+        PORTS=/opt/local
+
+        # setup the PATH and MANPATH
+        export PATH="$PORTS/bin:$PORTS/sbin:$PORTS/apache2/bin:$PATH"
+        export MANPATH="$PORTS/share/man:$MANPATH"
+
+        # nice little port alias
+        alias port="sudo nice -n +18 $PORTS/bin/port"
+    }
+
+    test -x /usr/pkg -a ! -L /usr/pkg && {
+        export PATH="/usr/pkg/sbin:/usr/pkg/bin:$PATH"
+        export MANPATH="/usr/pkg/share/man:$MANPATH"
+    }
+	
+	# Other OSX only aliases
+	alias dbg='open /Applications/MacGDBp.app'
+	alias imsize='sips -g pixelWidth -g pixelHeight'
+
+	# DNS
+	alias syncdns="cd /Users/xentek/Sites/dns-new/dns && rm -rf /Users/xentek/Sites/dns-new/dns/env.xentek /Users/xentek/Sites/dns-new/dns/env.slave && /Users/xentek/Sites/dns-new/dns/compile-dns.pl xentek && /Users/xentek/Sites/dns-new/dns/compile-dns.pl slave && rsync -avHS env.xentek 67.23.32.231:~ && rsync -avHS env.slave 174.143.252.196:~"
+	
+	# MySQL
+	alias mysql='/opt/local/bin/mysql5'
+	alias mysqladmin='/opt/local/bin/mysqladmin5'
+	alias mysqlctl='sudo /opt/local/etc/LaunchDaemons/org.macports.mysql5/mysql5.wrapper'
+	alias mysqlrestart='sudo /opt/local/etc/LaunchDaemons/org.macports.mysql5/mysql5.wrapper restart'
+
+	# Apache
+	alias apacherestart='sudo /opt/local/apache2/bin/apachectl restart'
+	alias vhosts='mate -w /opt/local/apache2/conf/vhosts'
+
+	# PHP
+	alias phpini='mate -w /opt/local/etc/php5/php.ini && sudo /opt/local/apache2/bin/apachectl restart'
+
+fi
 
 # Machine Specific Mods
-if [[ -s /Users/xentek/.localrc ]] ; then source /Users/xentek/.localrc ; fi
-
-# Local Dev
+if [[ -s $HOME/.localrc ]] ; then source $HOME/.localrc ; fi
 
 # Ruby
-if [[ -s /Users/xentek/.rvm/scripts/rvm ]] ; then source /Users/xentek/.rvm/scripts/rvm ; fi
+if [[ -s $HOME/.rvm/scripts/rvm ]] ; then source $HOME/.rvm/scripts/rvm ; fi
 
 # SVN
 alias svnadd='svn st | grep \? | awk '\''{print "svn add "$2 }'\'' | zsh'
@@ -79,22 +146,20 @@ alias fixgit='git config branch.master.remote origin && git config branch.master
 alias gitit='git pull && git ci -a && git push'
 alias gitdbg='git ci -am "dbg" && git push'
 
-# MySQL
-alias mysql='/opt/local/bin/mysql5'
-alias mysqladmin='/opt/local/bin/mysqladmin5'
-alias mysqlctl='sudo /opt/local/etc/LaunchDaemons/org.macports.mysql5/mysql5.wrapper'
-alias mysqlrestart='sudo /opt/local/etc/LaunchDaemons/org.macports.mysql5/mysql5.wrapper restart'
-
-# Apache
-alias apacherestart='sudo /opt/local/apache2/bin/apachectl restart'
-alias vhosts='mate -w /opt/local/apache2/conf/vhosts'
-
-# PHP
-alias phpini='mate -w /opt/local/etc/php5/php.ini && sudo /opt/local/apache2/bin/apachectl restart'
-
 # Python
-export PYTHONSTARTUP=/Users/xentek/.pystartup
+export PYTHONSTARTUP="$HOME/.pystartup"
 
 #TOOLS
-alias yuicompress='java -jar ~/bin/yuicompressor-2.4.2.jar'
-alias closurecompiler='java -jar ~/bin/compiler.jar'
+alias yuicompress="java -jar $HOME/bin/yuicompressor-2.4.2.jar"
+alias closurecompiler="java -jar $HOME/bin/compiler.jar"
+
+# Functions
+push_ssh_cert() {
+    local _host
+    test -f ~/.ssh/id_rsa.pub || ssh-keygen
+    for _host in "$@";
+    do
+        echo $_host
+        ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub
+    done
+}
