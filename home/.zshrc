@@ -42,12 +42,7 @@ else
 fi
 export PAGER MANPAGER ACK_PAGER
 
-# HELPFUL
-alias hosts='mate /etc/hosts'
-alias zshrc='mate -w ~/.zshrc && source ~/.zshrc'
-alias flushdns='dscacheutil -flushcache'
-alias updatedb='sudo /usr/libexec/locate.updatedb'
-alias sshkey='cat ~/.ssh/id_rsa.pub | pbcopy'
+# Shortcuts
 alias wpfetch='wget http://wordpress.org/latest.tar.gz && tar xzvf ./latest.tar.gz && rm -f ./latest.tar.gz'
 alias wptrunk='svn export http://svn.automattic.com/wordpress-mu/trunk/ && mv trunk/* . && rm -rf trunk'
 
@@ -103,6 +98,8 @@ if [ "$UNAME" = Darwin ]; then
 	# Other OSX only aliases
 	alias dbg='open /Applications/MacGDBp.app'
 	alias imsize='sips -g pixelWidth -g pixelHeight'
+	alias sshkey='cat ~/.ssh/id_rsa.pub | pbcopy'
+	
 
 	# DNS
 	alias syncdns="cd /Users/xentek/Sites/dns-new/dns && rm -rf /Users/xentek/Sites/dns-new/dns/env.xentek /Users/xentek/Sites/dns-new/dns/env.slave && /Users/xentek/Sites/dns-new/dns/compile-dns.pl xentek && /Users/xentek/Sites/dns-new/dns/compile-dns.pl slave && rsync -avHS env.xentek 67.23.32.231:~ && rsync -avHS env.slave 174.143.252.196:~"
@@ -119,6 +116,17 @@ if [ "$UNAME" = Darwin ]; then
 
 	# PHP
 	alias phpini='mate -w /opt/local/etc/php5/php.ini && sudo /opt/local/apache2/bin/apachectl restart'
+
+	alias hosts='mate /etc/hosts'
+	alias zshrc='mate -w ~/.zshrc && source ~/.zshrc'
+	alias flushdns='dscacheutil -flushcache'
+	alias updatedb='sudo /usr/libexec/locate.updatedb'
+
+fi
+
+if [ "$UNAME" = Linux ]; then
+
+
 
 fi
 
