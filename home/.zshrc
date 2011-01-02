@@ -94,9 +94,9 @@ fi
 alias ls="ls -F"
 alias l="ls -lAh"
 alias ll="ls -l"
-alias la='ls -A'
-alias grep='grep --color=auto -i'
-alias wpfetch='wget http://wordpress.org/latest.tar.gz && tar xzvf ./latest.tar.gz && rm -f ./latest.tar.gz'
+alias la="ls -A"
+alias grep="grep --color=auto -i"
+alias wpfetch="wget http://wordpress.org/latest.tar.gz && tar xzvf ./latest.tar.gz && rm -f ./latest.tar.gz"
 
 # SVN
 alias svnadd='svn st | grep \? | awk '\''{print "svn add "$2 }'\'' | zsh'
