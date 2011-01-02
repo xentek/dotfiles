@@ -2,7 +2,7 @@
 : ${HOME=~}
 : ${LOGNAME=$(id -un)}
 : ${UNAME=$(uname)}
-: ${HOSTFILE=~/.ssh/known_hosts}
+: ${HOSTFILE=$HOME/.ssh/known_hosts}
 
 # LANG
 : ${LANG:="en_US.UTF-8"}
@@ -10,6 +10,27 @@
 : ${LC_CTYPE:="en_US.UTF-8"}
 : ${LC_ALL:="en_US.UTF-8"}
 export LANG LANGUAGE LC_CTYPE LC_ALL
+
+# SSH - XENTEK
+alias hostedbyxentek='ssh 67.23.32.231'
+alias xenproxy1='ssh proxy.mey.hostedbyxentek.net'
+alias meydb1='ssh db.mey.hostedbyxentek.net'
+alias meyweb1='ssh web.mey.hostedbyxentek.net'
+alias meyweb2='ssh web2.mey.hostedbyxentek.net'
+alias meyweb3='ssh web3.mey.hostedbyxentek.net'
+alias xentek='ssh 174.143.27.190'
+alias gcaweb='ssh web.gca.hostedbyxentek.net'
+alias eaweb='ssh web.ea.hostedbyxentek.net'
+alias rpmweb='ssh web.rpm.hostedbyxentek.net'
+alias orb='ssh web.orb.hostedbyxentek.net'
+alias jj="ssh 67.23.32.248"
+alias bpdev="ssh 69.164.205.135"
+alias bp="ssh 69.164.202.104"
+
+# SSH - Clients
+alias adsblog='ssh 209.20.76.164'
+alias asa="ssh -i /Users/xentek/.ssh/asa_slice -p 16885 deploy@173.203.89.165"
+alias asaqa="ssh -i /Users/xentek/.ssh/asa_slice -p 16885 deploy@184.106.206.94"
 
 # Terminal Options
 set -o notify # notify of bg job completion immediately
@@ -30,7 +51,7 @@ export XDEBUG_CONFIG="idekey=xentek"
 
 # PATH
 export PATH=$PATH
-# put ~/bin on PATH if you have it
+# put $HOME/bin on PATH if you have it
 test -d "$HOME/bin" &&
 PATH="$HOME/bin:$PATH"
 
@@ -49,18 +70,33 @@ else
 fi
 export PAGER MANPAGER ACK_PAGER
 
-# Shortcuts
-alias wpfetch='wget http://wordpress.org/latest.tar.gz && tar xzvf ./latest.tar.gz && rm -f ./latest.tar.gz'
-alias wptrunk='svn export http://svn.automattic.com/wordpress-mu/trunk/ && mv trunk/* . && rm -rf trunk'
+# SSH-AGENT
+SSH_ENV="$HOME/.ssh/environment"
+function start_agent {
+     echo "Initialising new SSH agent..."
+     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+     echo succeeded
+     chmod 600 "${SSH_ENV}"
+     . "${SSH_ENV}" > /dev/null
+     /usr/bin/ssh-add;
+}
 
-# LS
+if [ -f "${SSH_ENV}" ]; then
+     . "${SSH_ENV}" > /dev/null
+     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+         start_agent;
+     }
+else
+     start_agent;
+fi
+
+# Aliases
 alias ls="ls -F"
 alias l="ls -lAh"
 alias ll="ls -l"
 alias la='ls -A'
-
-# GREP
 alias grep='grep --color=auto -i'
+alias wpfetch='wget http://wordpress.org/latest.tar.gz && tar xzvf ./latest.tar.gz && rm -f ./latest.tar.gz'
 
 # SVN
 alias svnadd='svn st | grep \? | awk '\''{print "svn add "$2 }'\'' | zsh'
@@ -68,8 +104,7 @@ alias svnst='svn st --ignore-externals'
 alias svnext='svn pe svn:externals .'
 alias svnign='svn pe svn:ignore .'
 alias delsvn='find . -name .svn | xargs rm -rf'
-export LC_CTYPE=en_US.UTF-8
-export SVN_EDITOR=/usr/bin/vi
+export SVN_EDITOR="/usr/bin/vi"
 
 # GIT
 alias gst='git status'
@@ -89,49 +124,48 @@ alias closurecompiler="java -jar $HOME/bin/compiler.jar"
 
 # OSX Only
 if [ "$UNAME" = Darwin ]; then
-    # put ports on the paths if /opt/local exists
-    test -x /opt/local -a ! -L /opt/local && {
-        PORTS=/opt/local
+	# put ports on the paths if /opt/local exists
+	test -x /opt/local -a ! -L /opt/local && {
+		# setup the PATH and MANPATH
+		export PATH="$PORTS/bin:$PORTS/sbin:$PORTS/apache2/bin:$PATH"
+		export MANPATH="$PORTS/share/man:$MANPATH"
 
-        # setup the PATH and MANPATH
-        export PATH="$PORTS/bin:$PORTS/sbin:$PORTS/apache2/bin:$PATH"
-        export MANPATH="$PORTS/share/man:$MANPATH"
+		# nice little port alias
+		alias port="sudo nice -n +18 $PORTS/bin/port"
+	}
 
-        # nice little port alias
-        alias port="sudo nice -n +18 $PORTS/bin/port"
-    }
-
-    test -x /usr/pkg -a ! -L /usr/pkg && {
-        export PATH="/usr/pkg/sbin:/usr/pkg/bin:$PATH"
-        export MANPATH="/usr/pkg/share/man:$MANPATH"
-    }
+	test -x /usr/pkg -a ! -L /usr/pkg && {
+		export PATH="/usr/pkg/sbin:/usr/pkg/bin:$PATH"
+		export MANPATH="/usr/pkg/share/man:$MANPATH"
+	}
 	
 	# Other OSX only aliases
 	alias dbg='open /Applications/MacGDBp.app'
 	alias imsize='sips -g pixelWidth -g pixelHeight'
 
 	# DNS
-	alias syncdns="cd /Users/xentek/Sites/dns-new/dns && rm -rf /Users/xentek/Sites/dns-new/dns/env.xentek /Users/xentek/Sites/dns-new/dns/env.slave && /Users/xentek/Sites/dns-new/dns/compile-dns.pl xentek && /Users/xentek/Sites/dns-new/dns/compile-dns.pl slave && rsync -avHS env.xentek 67.23.32.231:~ && rsync -avHS env.slave 174.143.252.196:~"
+	alias syncdns="cd $HOME/Sites/dns-new/dns && rm -rf $HOME/Sites/dns-new/dns/env.xentek $HOME/Sites/dns-new/dns/env.slave && $HOME/Sites/dns-new/dns/compile-dns.pl xentek && $HOME/Sites/dns-new/dns/compile-dns.pl slave && rsync -avHS env.xentek 67.23.32.231:~ && rsync -avHS env.slave 174.143.252.196:~"
 	alias flushdns='dscacheutil -flushcache'
 		
 	# DEV STUFF
-	alias mysql='/opt/local/bin/mysql5'
-	alias mysqladmin='/opt/local/bin/mysqladmin5'
-	alias mysqlctl='sudo /opt/local/etc/LaunchDaemons/org.macports.mysql5/mysql5.wrapper'
-	alias vhosts='mate -w /opt/local/apache2/conf/vhosts'
-	alias phpini='mate -w /opt/local/etc/php5/php.ini && sudo /opt/local/apache2/bin/apachectl restart'
+	alias mysql="$PORTS/bin/mysql5"
+	alias mysqladmin="$PORTS/bin/mysqladmin5"
+	alias mysqlctl="sudo $PORTS/etc/LaunchDaemons/org.macports.mysql5/mysql5.wrapper"
+	alias vhosts="mate -w $PORTS/apache2/conf/vhosts"
+	alias phpini="mate -w $PORTS/etc/php5/php.ini && sudo $PORTS/apache2/bin/apachectl restart"
 
 	# Stuff That's Available on Mac and Linux, but with different commands
-	alias sshkey='cat ~/.ssh/id_rsa.pub | pbcopy'
-	alias hosts='mate /etc/hosts'
-	alias zshrc='mate -w ~/.zshrc && source ~/.zshrc'
-	alias updatedb='sudo /usr/libexec/locate.updatedb'
-	alias mysqlrestart='sudo /opt/local/etc/LaunchDaemons/org.macports.mysql5/mysql5.wrapper restart'
-	alias apacherestart='sudo /opt/local/apache2/bin/apachectl restart'
+	alias sshkey="cat $HOME/.ssh/id_rsa.pub | pbcopy"
+	alias hosts="mate /etc/hosts"
+	alias zshrc="mate -w $HOME/.zshrc && source $HOME/.zshrc"
+	alias updatedb="sudo /usr/libexec/locate.updatedb"
+	alias mysqlrestart="sudo $PORTS/etc/LaunchDaemons/org.macports.mysql5/mysql5.wrapper restart"
+	alias apacherestart="sudo $PORTS/apache2/bin/apachectl restart"
 
 fi
 
 if [ "$UNAME" = Linux ]; then
+
 	alias ack="ack-grep"
 	alias free="free -m"
 	alias update="sudo aptitude update"
@@ -146,15 +180,19 @@ if [ "$UNAME" = Linux ]; then
 	alias a2dismod="sudo a2dismod"
 	alias a2ensite="sudo a2ensite"
 	alias a2dissite="sudo a2dissite"
-	alias nginxrestart='sudo /etc/init.d/nginx restart'
+	alias nginxrestart="sudo /etc/init.d/nginx restart"
 
 	# Stuff That's Available on Mac and Linux, but with different commands
-	alias sshkey='cat ~/.ssh/id_rsa.pub'
+	alias sshkey='cat $HOME/.ssh/id_rsa.pub'
 	alias hosts='vi /etc/hosts'
-	alias zshrc='vi ~/.zshrc && source ~/.zshrc'
+	alias zshrc='vi $HOME/.zshrc && source $HOME/.zshrc'
 	alias updatedb='sudo updatedb'
 	alias mysqlrestart='sudo /etc/init.d/mysql restart'
 	alias apacherestart='sudo /etc/init.d/apache2 restart'
+	
+	#DNS
+	alias syncdns="sudo rsync -avHS $HOME/env.xentek/ /var/cache/bind/ && sudo chown -R root:bind /var/cache/bind/ && sudo chown -R bind:bind /var/cache/bind/slave/ && sudo rndc reload"
+	alias syncdns_slave="sudo rsync -avHS $HOME/env.slave/ /var/cache/bind/ && sudo chown -R root:bind /var/cache/bind/ && sudo chown -R bind:bind /var/cache/bind/slave/ && sudo rndc reload"
 fi
 
 # Machine Specific Mods
