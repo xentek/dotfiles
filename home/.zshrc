@@ -70,27 +70,6 @@ else
 fi
 export PAGER MANPAGER ACK_PAGER
 
-# SSH-AGENT
-SSH_ENV="$HOME/.ssh/environment"
-function start_agent {
-     echo "Initialising new SSH agent..."
-     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-     echo succeeded
-     chmod 600 "${SSH_ENV}"
-     . "${SSH_ENV}" > /dev/null
-     /usr/bin/ssh-add;
-}
-
-rm -f $HOME/.ssh/environment
-if [ -f "${SSH_ENV}" ]; then
-     . "${SSH_ENV}" > /dev/null
-     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-         start_agent;
-     }
-else
-     start_agent;
-fi
-
 # Aliases
 alias ls="ls -F"
 alias l="ls -lAh"

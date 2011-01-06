@@ -6,10 +6,8 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-
 set encoding=utf-8
 set scrolloff=3
-set smartindent
 set showmode
 set showcmd
 set hidden
@@ -22,7 +20,6 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set ignorecase
-set smartcase
 set incsearch
 set showmatch
 set hlsearch
