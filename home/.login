@@ -1,6 +1,6 @@
 # SSH-AGENT
 : ${UNAME=$(uname)}
-if [ "$UNAME" = Darwin ]; then
+if [ "$UNAME" = Linux ]; then
     SSH_ENV="$HOME/.ssh/environment"
     function start_agent {
          echo "Initialising new SSH agent..."
