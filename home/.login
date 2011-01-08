@@ -1,6 +1,8 @@
 # SSH-AGENT
 : ${UNAME=$(uname)}
+echo "$UNAME"
 if [ "$UNAME" = Linux ]; then
+    echo "$UNAME 2"
     SSH_ENV="$HOME/.ssh/environment"
     function start_agent {
          echo "Initialising new SSH agent..."
