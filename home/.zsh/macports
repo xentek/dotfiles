@@ -1,0 +1,18 @@
+: ${UNAME=$(uname)}
+if [ "$UNAME" = Darwin ]; then
+	# ADD MacPorts to PATH
+	if [[ -d /opt/local/sbin ]];then
+	    PATH=/opt/local/sbin:${PATH}
+		export PATH
+	fi
+
+	if [[ -d /opt/local/bin ]];then
+	    PATH=/opt/local/bin:${PATH}
+		export PATH
+	fi
+
+	if [[ -d /opt/local/apache2/bin ]];then
+	    PATH=/opt/local/apache2/bin:${PATH}
+		export PATH
+	fi
+fi

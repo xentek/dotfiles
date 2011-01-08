@@ -1,0 +1,12 @@
+if [[ -o interactive ]]; then
+
+    if [[ -x $SWPREFIX/bin/ls ||   $(uname) != Darwin  && $(uname) != FreeBSD  ]]; then  
+        alias ls='ls --color=auto'
+    fi
+
+    alias lsa='ls -AFlh'
+    alias lsd='ls -AFldh'
+    alias cd..='cd ..'
+    alias ..='cd ..'
+    alias cpan='sudo perl -MCPAN -e shell'
+fi
