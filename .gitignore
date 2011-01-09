@@ -1,3 +1,4 @@
+*.log
 home/.zsh/cache
 zdirdump
 zsh_history
