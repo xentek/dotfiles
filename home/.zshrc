@@ -43,6 +43,9 @@ export PAGER MANPAGER ACK_PAGER
 # Python
 export PYTHONSTARTUP="$HOME/.pystartup"
 
+# Mac Ports
+if [[ -s $HOME/.zsh/macports ]] ; then source $HOME/.zsh/macports ; fi
+
 # Functions
 if [[ -s $HOME/.zsh/functions ]] ; then source $HOME/.zsh/functions ; fi
 
