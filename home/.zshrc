@@ -25,6 +25,9 @@ BLUE="%{"$'\033[01;34m'"%}"
 BOLD="%{"$'\033[01;39m'"%}"
 NORM="%{"$'\033[00m'"%}"
 
+# (Left) Prompt
+export PS1="${GREEN}%m${NORM}:${BLUE}%~${NORM}$ "
+
 # PAGER
 if test -n "$(command -v less)" ; then
     PAGER="less -FirSwX"
