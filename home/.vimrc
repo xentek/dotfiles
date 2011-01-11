@@ -89,3 +89,6 @@ set listchars=tab:▸\ ,eol:¬
 nnoremap j gj
 nnoremap k gk
 au FocusLost * :wa
+
+" NerdTree
+:noremap <Leader>n :NERDTreeToggle<CR>
