@@ -17,4 +17,9 @@ if [ "$UNAME" = Darwin ]; then
 		PATH=$PORTS/apache2/bin:${PATH}
 		export PATH
 	fi
+
+	if [[ -d $PORTS/lib/postgresql83/bin ]];then
+		PATH=$PORTS/lib/postgresql83/bin:${PATH}
+		export PATH
+	fi
 fi
