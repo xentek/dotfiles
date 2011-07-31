@@ -4,6 +4,7 @@
 	co = checkout
 	st = status
 	info = status
+	svn-diff = !git-svn-diff
 [user]
 	name = Eric Marden
 	email = eric@xentek.net
