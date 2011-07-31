@@ -3,13 +3,13 @@ if [ "$UNAME" = Darwin ]; then
 
 	PORTS='/opt/local'
 
-	if [[ -d $PORTS/sbin ]];then
-		PATH=$PORTS/sbin:${PATH}
+	if [[ -d $PORTS/bin ]];then
+		PATH=$PORTS/bin:${PATH}
 		export PATH
 	fi
 
-	if [[ -d $PORTS/bin ]];then
-		PATH=$PORTS/bin:${PATH}
+	if [[ -d $PORTS/sbin ]];then
+		PATH=$PORTS/sbin:${PATH}
 		export PATH
 	fi
 

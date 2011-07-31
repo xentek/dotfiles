@@ -17,6 +17,7 @@ if [[ -o interactive ]]; then
 	alias svnext='svn pe svn:externals .'
 	alias svnign='svn pe svn:ignore .'
 	alias delsvn='find . -name .svn | xargs rm -rf'
+	alias svninfo="svn info | grep -E 'Repository Root: (.*)[:space:]$' | sed 's/Repository Root: //g' | perl -e '$info= <STDIN>; chomp $info; print $info;'"
 	export SVN_EDITOR="/usr/bin/vi"
 
 	# GIT
