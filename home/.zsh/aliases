@@ -45,9 +45,9 @@ if [[ -o interactive ]]; then
 		alias flushdns='dscacheutil -flushcache'
 
 		# DEV STUFF
-		alias mysql="$PORTS/bin/mysql5"
-		alias mysqladmin="$PORTS/bin/mysqladmin5"
-		alias mysqlctl="sudo $PORTS/etc/LaunchDaemons/org.macports.mysql5/mysql5.wrapper"
+		# alias mysql="$PORTS/bin/mysql5"
+		# alias mysqladmin="$PORTS/bin/mysqladmin5"
+		# alias mysqlctl="sudo $PORTS/etc/LaunchDaemons/org.macports.mysql5/mysql5.wrapper"
 		alias vhosts="mate -w $PORTS/apache2/conf/vhosts"
 		alias phpini="mate -w $PORTS/etc/php5/php.ini && sudo $PORTS/apache2/bin/apachectl restart"
 
@@ -56,8 +56,8 @@ if [[ -o interactive ]]; then
 		alias hosts="mate /etc/hosts"
 		alias zshrc="mate -w $HOME/.zshrc && source $HOME/.zshrc"
 		alias updatedb="sudo /usr/libexec/locate.updatedb"
-		alias mysqlrestart="sudo $PORTS/etc/LaunchDaemons/org.macports.mysql5/mysql5.wrapper restart"
-		alias apacherestart="sudo $PORTS/apache2/bin/apachectl restart"
+		# alias mysqlrestart="sudo $PORTS/etc/LaunchDaemons/org.macports.mysql5/mysql5.wrapper restart"
+		# alias apacherestart="sudo $PORTS/apache2/bin/apachectl restart"
 
 	fi
 
