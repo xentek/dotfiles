@@ -45,9 +45,6 @@ export PAGER MANPAGER ACK_PAGER
 # Python
 export PYTHONSTARTUP="$HOME/.pystartup"
 
-# Mac Ports
-if [[ -s $HOME/.zsh/macports ]] ; then source $HOME/.zsh/macports ; fi
-
 # Functions
 if [[ -s $HOME/.zsh/functions ]] ; then source $HOME/.zsh/functions ; fi
 
@@ -56,6 +53,3 @@ if [[ -s $HOME/.zsh/aliases ]] ; then source $HOME/.zsh/aliases ; fi
 
 # Machine Specific Mods
 if [[ -s $HOME/.localrc ]] ; then source $HOME/.localrc ; fi
-
-# RVM
-if [[ -s $HOME/.rvm/scripts/rvm ]] ; then source $HOME/.rvm/scripts/rvm ; fi
