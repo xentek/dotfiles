@@ -1,0 +1,21 @@
+[submodule "home/.vim/bundle/Kwbd.vim"]
+	path = home/.vim/bundle/Kwbd.vim
+	url = https://github.com/rgarver/Kwbd.vim.git
+[submodule "home/.vim/bundle/fuzzyfinder_textmate"]
+	path = home/.vim/bundle/fuzzyfinder_textmate
+	url = https://github.com/sethbc/fuzzyfinder_textmate.git
+[submodule "home/.vim/bundle/nerdcommenter"]
+	path = home/.vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "home/.vim/bundle/vim-coffee-script"]
+	path = home/.vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "home/.vim/bundle/vim-css-color"]
+	path = home/.vim/bundle/vim-css-color
+	url = https://github.com/ap/vim-css-color.git
+[submodule "home/.vim/bundle/vim-rails"]
+	path = home/.vim/bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "home/.vim/bundle/vim-surround"]
+	path = home/.vim/bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
