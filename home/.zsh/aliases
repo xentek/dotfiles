@@ -3,11 +3,6 @@ if [[ -o interactive ]]; then
 	alias ..='cd ..'
         export CLICOLOR=xterm
         alias ls="ls -F"
-	alias l="ls -lAh"
-	alias ll="ls -l"
-	alias la="ls -A"
-	alias lsa='ls -AFlh'
-	alias lsd='ls -AFldh'
 	alias grep="grep --color=auto -i"
 	alias wpfetch="wget http://wordpress.org/latest.tar.gz && tar xzvf ./latest.tar.gz && rm -f ./latest.tar.gz"
 	alias src="source ~/.zshrc"

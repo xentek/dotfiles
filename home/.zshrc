@@ -10,6 +10,8 @@
 : ${LC_CTYPE:="en_US.UTF-8"}
 : ${LC_ALL:="en_US.UTF-8"}
 export LANG LANGUAGE LC_CTYPE LC_ALL
+
+# Editor
 export EDITOR=vi
 export SVN_EDITOR=vi
 
@@ -21,7 +23,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="xentek"
+ZSH_THEME="shellstorm"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
