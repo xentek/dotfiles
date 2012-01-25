@@ -1,7 +1,8 @@
 if [[ -o interactive ]]; then
 	alias cd..='cd ..'
 	alias ..='cd ..'
-	alias ls="ls -F"
+        export CLICOLOR=xterm
+        alias ls="ls -F"
 	alias l="ls -lAh"
 	alias ll="ls -l"
 	alias la="ls -A"
@@ -12,7 +13,7 @@ if [[ -o interactive ]]; then
 	alias src="source ~/.zshrc"
 	
 	# SVN
-	alias svnadd='svn st | grep \? | awk '\''{print "svn add "$2 }'\'' | zsh'
+	alias svnadd="svn st | grep \? | awk '''{print \"svn add \"$2 }''' | zsh"
 	alias svnst='svn st --ignore-externals'
 	alias svnext='svn pe svn:externals .'
 	alias svnign='svn pe svn:ignore .'
@@ -23,15 +24,15 @@ if [[ -o interactive ]]; then
 	# GIT
 	alias gst='git status'
 	alias gb='git branch'
-	alias gitp='git pull && git push'
+	alias gitp='git smart-pull && git push origin master'
 	alias gitundo='git commit --amend'
 	alias fixgit='git config branch.master.remote origin && git config branch.master.merge refs/heads/master'
-	alias gitit='git pull && git ci -a && git push'
-	alias gitdbg='git ci -am "dbg" && git push'
+	alias gitdbg='git ci -am "dbg" && git push origin master'
 	
 	# Perl
 	alias cpan='sudo perl -MCPAN -e shell'
 
+	alias ack='nocorrect ack'
 
 	if [ "$UNAME" = Darwin ]; then
 		# Other OSX only aliases
