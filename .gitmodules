@@ -1,6 +1,3 @@
-[submodule "home/.vim/bundle/Kwbd.vim"]
-	path = home/.vim/bundle/Kwbd.vim
-	url = https://github.com/rgarver/Kwbd.vim.git
 [submodule "home/.vim/bundle/fuzzyfinder_textmate"]
 	path = home/.vim/bundle/fuzzyfinder_textmate
 	url = https://github.com/sethbc/fuzzyfinder_textmate.git
@@ -22,3 +19,6 @@
 [submodule "home/.oh-my-zsh"]
 	path = home/.oh-my-zsh
 	url = git@github.com:xentek/oh-my-zsh.git
+[submodule "home/.vim/bundle/kwbdi.vim"]
+	path = home/.vim/bundle/kwbdi.vim
+	url = https://github.com/vim-scripts/kwbdi.vim.git
