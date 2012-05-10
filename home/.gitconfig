@@ -35,5 +35,3 @@
 [github]
 	user = xentek
 	token = b7feed758c325250f141045d1b0b95cc
-[hub]
-	protocol = https
