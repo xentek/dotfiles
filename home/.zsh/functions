@@ -7,3 +7,14 @@ push_ssh_cert() {
         ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub
     done
 }
+
+push_ssh_key() {
+  local _host
+  test -f ~/.ssh/id_rsa.pub
+  for _host in "$@";
+  do
+    echo $_host
+    scp ~/.ssh/id_rsa.pub $_host:~/.ssh/id_rsa.pub
+    scp ~/.ssh/id_rsa $_host:~/.ssh/id_rsa
+  done
+}
