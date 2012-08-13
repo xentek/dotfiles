@@ -26,8 +26,13 @@ if [[ -o interactive ]]; then
 	
 	# Perl
 	alias cpan='sudo perl -MCPAN -e shell'
-
+        
+        # Ack
 	alias ack='nocorrect ack'
+
+        # Ruby and Rails
+        alias biwp='bundle install --without production'
+        alias dbmigrate='bundle exec rake db:migrate && RAILS_ENV=test bundle exec rake db:migrate'
 
 	if [ "$UNAME" = Darwin ]; then
 		# Other OSX only aliases
