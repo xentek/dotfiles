@@ -21,7 +21,9 @@ set noeb				" no bells
 set ls=2				" status bar
 set expandtab                           " expand tabs to spaces
 set tw=72                               " 72 character width
-" set colorcolumn=72                      " draw a line at 72
+" set colorcolumn=72                    " draw a line at 72
+set modeline                            " turn on modeline support
+set modelines=5                         " check 5 lines for modelines in the file
 
 " Key Mappings
 map <leader>t :FuzzyFinderTextMate<CR>	" CMD+T support for FuzzyFinder
@@ -34,3 +36,4 @@ au BufRead,BufNewFile Guardfile set filetype=ruby                       " Gemfil
 au BufRead,BufNewFile *.jeco set filetype=erb                           " Gemfiles should be treated as ruby
 au BufRead,BufNewFile *.eco set filetype=erb                           " Gemfiles should be treated as ruby
 au BufNewFile,BufReadPost *.coffee setl invlist shiftwidth=2 expandtab  " 2 space indents for coffeescript
+au BufRead,BufNewFile aliases set filetype=sh                           " aliases file should be treated as shell script
