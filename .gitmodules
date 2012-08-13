@@ -21,4 +21,7 @@
 	url = git@github.com:xentek/oh-my-zsh.git
 [submodule "home/.vim/bundle/kwbdi.vim"]
 	path = home/.vim/bundle/kwbdi.vim
-	url = https://github.com/vim-scripts/kwbdi.vim.git
+        url = https://github.com/vim-scripts/kwbdi.vim.git
+[submodule "home/.vim/bundle/file-line"]
+        path = home/.vim/bundle/file-line
+        url = git://github.com/bogado/file-line.git
