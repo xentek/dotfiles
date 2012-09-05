@@ -25,3 +25,6 @@
 [submodule "home/.vim/bundle/file-line"]
 	path = home/.vim/bundle/file-line
 	url = git://github.com/bogado/file-line.git
+[submodule "home/.vim/bundle/puppet"]
+	path = home/.vim/bundle/puppet
+	url = git://github.com/rodjek/vim-puppet.git
