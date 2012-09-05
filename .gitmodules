@@ -28,3 +28,6 @@
 [submodule "home/.vim/bundle/puppet"]
 	path = home/.vim/bundle/puppet
 	url = git://github.com/rodjek/vim-puppet.git
+[submodule "home/.vim/syntastic"]
+	path = home/.vim/syntastic
+	url = https://github.com/scrooloose/syntastic.git
