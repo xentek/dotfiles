@@ -31,6 +31,7 @@ nmap <F8> :TagbarToggle<CR>             " Tagbar Hot Key
 
 " Filetypes
 au BufRead,BufNewFile Thorfile set filetype=ruby                        " Thorfiles should be treated as ruby
+au BufRead,BufNewFile *.thor   set filetype=ruby                        " Thorfiles should be treated as ruby
 au BufRead,BufNewFile Gemfile set filetype=ruby                         " Gemfiles should be treated as ruby
 au BufRead,BufNewFile Guardfile set filetype=ruby                       " Gemfiles should be treated as ruby
 au BufRead,BufNewFile *.jeco set filetype=erb                           " Gemfiles should be treated as ruby
