@@ -28,6 +28,7 @@ set modelines=5                         " check 5 lines for modelines in the fil
 " Key Mappings
 map <leader>t :FuzzyFinderTextMate<CR>	" CMD+T support for FuzzyFinder
 nmap <F8> :TagbarToggle<CR>             " Tagbar Hot Key
+nnoremap - :Switch<cr>                  " Switch.vim
 
 " Filetypes
 au BufRead,BufNewFile Thorfile set filetype=ruby                        " Thorfiles should be treated as ruby

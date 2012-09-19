@@ -34,3 +34,6 @@
 [submodule "home/.vim/bundle/syntastic"]
 	path = home/.vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "home/.vim/bundle/switch"]
+	path = home/.vim/bundle/switch
+	url = git://github.com/AndrewRadev/switch.vim.git
