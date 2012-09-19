@@ -31,11 +31,12 @@ nmap <F8> :TagbarToggle<CR>             " Tagbar Hot Key
 nnoremap - :Switch<cr>                  " Switch.vim
 
 " Filetypes
+au BufRead,BufNewFile Lobfile set filetype=ruby                         " Lobfiles should be treated as ruby
 au BufRead,BufNewFile Thorfile set filetype=ruby                        " Thorfiles should be treated as ruby
 au BufRead,BufNewFile *.thor   set filetype=ruby                        " Thorfiles should be treated as ruby
 au BufRead,BufNewFile Gemfile set filetype=ruby                         " Gemfiles should be treated as ruby
-au BufRead,BufNewFile Guardfile set filetype=ruby                       " Gemfiles should be treated as ruby
-au BufRead,BufNewFile *.jeco set filetype=erb                           " Gemfiles should be treated as ruby
-au BufRead,BufNewFile *.eco set filetype=erb                           " Gemfiles should be treated as ruby
+au BufRead,BufNewFile Guardfile set filetype=ruby                       " Guardfiles should be treated as ruby
+au BufRead,BufNewFile *.jeco set filetype=erb                           " eco templates should be treated as ruby
+au BufRead,BufNewFile *.eco set filetype=erb                            " eco templates should be treated as ruby
 au BufNewFile,BufReadPost *.coffee setl invlist shiftwidth=2 expandtab  " 2 space indents for coffeescript
 au BufRead,BufNewFile aliases set filetype=sh                           " aliases file should be treated as shell script
