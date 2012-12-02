@@ -63,7 +63,7 @@ fi
 export PAGER MANPAGER ACK_PAGER
 
 # Ack
-export ACK_OPTIONS="--type-add js=.jst,.coffee --type-add ruby=.haml --type-add css=.scss"
+export ACK_OPTIONS="--type-add js=.jst,.coffee,.ejs --type-add ruby=.haml --type-add css=.scss"
 
 # Python
 export PYTHONSTARTUP="$HOME/.pystartup"
