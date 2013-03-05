@@ -21,7 +21,7 @@ set ru					" show the 'ruler'
 set vb					" visual bell
 set noeb				" no bells
 set expandtab                           " expand tabs to spaces
-set tw=80                               " page width  
+set tw=72                               " page width  
 "set colorcolumn=80                     " draw a line at column 80
 set modeline                            " turn on modeline support
 set modelines=5                         " check 5 lines for modelines in the file

@@ -37,3 +37,9 @@
 [submodule "home/.vim/bundle/switch"]
 	path = home/.vim/bundle/switch
 	url = git://github.com/AndrewRadev/switch.vim.git
+[submodule "home/.vim/bundle/vim-slim"]
+	path = home/.vim/bundle/vim-slim
+	url = git@github.com:xentek/vim-slim.git
+[submodule "home/.vim/bundle/vim-gitgutter"]
+	path = home/.vim/bundle/vim-gitgutter
+	url = git://github.com/airblade/vim-gitgutter.git
