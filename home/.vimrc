@@ -1,5 +1,6 @@
 " Configuration
 set nocompatible 	  		" VIM
+call pathogen#infect()			" easily install plugins to ~/.vim
 syntax on		  		" Syntax Highlighting
 filetype plugin indent on 		" Enable filetype-specific indenting and plugins
 set background=dark	  		" Dark BG
@@ -7,7 +8,6 @@ colorscheme grb256	  		" Use IR_Black as theme
 set nu			  		" Turn on line numbers
 set autoindent				" auto-indent
 set copyindent                          " use previous indention when autoindenting
-call pathogen#infect()			" easily install plugins to ~/.vim
 set shiftwidth=2                        " 2 space tabs
 set softtabstop=2			" 2 space tabs
 set shiftround                          " use multiples of shiftwidth when indenting blocks
@@ -42,6 +42,7 @@ au BufRead,BufNewFile Thorfile set filetype=ruby                        " Thorfi
 au BufRead,BufNewFile *.thor   set filetype=ruby                        " Thorfiles should be treated as ruby
 au BufRead,BufNewFile Gemfile set filetype=ruby                         " Gemfiles should be treated as ruby
 au BufRead,BufNewFile Guardfile set filetype=ruby                       " Guardfiles should be treated as ruby
+au BufRead,BufNewFile *.ru set filetype=ruby                            " Rackup Files should be treated as ruby
 au BufRead,BufNewFile *.jeco set filetype=erb                           " eco templates should be treated as ruby
 au BufRead,BufNewFile *.eco set filetype=erb                            " eco templates should be treated as ruby
 au BufNewFile,BufReadPost *.coffee setl invlist shiftwidth=2 expandtab  " 2 space indents for coffeescript
