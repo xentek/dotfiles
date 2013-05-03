@@ -58,7 +58,7 @@ show-logfile = false
 # Default logging status, true turns logging on.
 # ex: logging = true|false
 #
-logging = true
+logging = false
 
 #
 # Logfile, the default siege logfile is $PREFIX/var/siege.log
@@ -130,7 +130,7 @@ concurrent = 15
 # are assumed.
 # ex: time = 50M
 #
-time = 1M
+#time = 1M
 
 #
 # Repetitions.  The length of siege may be specified in client
@@ -171,7 +171,7 @@ time = 1M
 # for benchmarking.
 # ex: delay = 3
 #
-delay = 1
+#delay = 1
 
 #
 # Connection timeout value. Set the value in seconds for 
