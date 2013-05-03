@@ -12,8 +12,8 @@
 export LANG LANGUAGE LC_CTYPE LC_ALL
 
 # Editor
-export EDITOR=vi
-export SVN_EDITOR=vi
+export EDITOR=/usr/bin/vim
+export SVN_EDITOR=/usr/bin/vim
 
 # OH MY ZSH
 # Path to your oh-my-zsh configuration.
