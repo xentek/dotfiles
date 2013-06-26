@@ -1,3 +1,6 @@
+[submodule "home/.oh-my-zsh"]
+	path = home/.oh-my-zsh
+	url = git@github.com:xentek/oh-my-zsh.git
 [submodule "home/.vim/bundle/nerdcommenter"]
 	path = home/.vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
@@ -13,9 +16,6 @@
 [submodule "home/.vim/bundle/vim-surround"]
 	path = home/.vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule "home/.oh-my-zsh"]
-	path = home/.oh-my-zsh
-	url = git@github.com:xentek/oh-my-zsh.git
 [submodule "home/.vim/bundle/kwbdi.vim"]
 	path = home/.vim/bundle/kwbdi.vim
         url = https://github.com/vim-scripts/kwbdi.vim.git
@@ -58,3 +58,6 @@
 [submodule "home/.vim/bundle/ctrlp.vim"]
 	path = home/.vim/bundle/ctrlp.vim
 	url = git@github.com:kien/ctrlp.vim.git
+[submodule "home/.vim/bundle/vim-slim"]
+	path = home/.vim/bundle/vim-slim
+	url = git@github.com:slim-template/vim-slim.git
