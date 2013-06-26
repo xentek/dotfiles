@@ -84,3 +84,6 @@ eval "$(rbenv init -)"
 
 # ssh agent forwarding with oh-my-zsh
 zstyle :omz:plugins:ssh-agent agent-forwarding on
+
+# bump up ulimit
+ulimit -n 1024
