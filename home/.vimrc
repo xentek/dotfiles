@@ -10,6 +10,7 @@ set autoindent				" auto-indent
 set copyindent                          " use previous indention when autoindenting
 set shiftwidth=2                        " 2 space tabs
 set softtabstop=2			" 2 space tabs
+set et                                  " expand tabs into spaces
 set shiftround                          " use multiples of shiftwidth when indenting blocks
 set wildmode=list:longest		" tab completion for file paths
 set clipboard=unnamed			" Integrate with System Keyboard
@@ -29,12 +30,24 @@ set ls=2				" turn on status line
 set statusline=%f\ %m\ %r               " status line tweaks
 set statusline+=Line:\ %l/%L            " show line numbers: current/total
 set statusline+=\ \|\ Col:\ %v          " show column number
+set shell=/usr/local/bin/zsh            " Use zsh for shell commands
+
+" UTF-8
+if has('multi_byte')
+  scriptencoding utf-8
+  set encoding=utf-8
+end
+
 
 " Key Mappings
+let mapleader = ","                                    " <leader> 
+let maplocalleader = "\\"                              " <localleader>
 nnoremap - :Switch<cr>                                 " Switch.vim
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR>          " Create the directory containing the file in the buffer
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR> " find merge conflict markers
 cmap w!! %!sudo tee > /dev/null %                      " use sudo, if needed to write a file
+vnoremap < <gv                                         " keep selection after indent 
+vnoremap > >gv                                         " keep selection after outdent
 
 " Filetypes
 au BufRead,BufNewFile Lobfile set filetype=ruby                         " Lobfiles should be treated as ruby
@@ -52,3 +65,10 @@ au BufNewFile,BufRead *.jst set filetype=erb                            " ejs sh
 
 " syntastic config
 let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
+
+" CTRL-P config
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" Taglist config
+map <leader>t :TlistToggle<CR>

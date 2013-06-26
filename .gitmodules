@@ -1,6 +1,3 @@
-[submodule "home/.vim/bundle/fuzzyfinder_textmate"]
-	path = home/.vim/bundle/fuzzyfinder_textmate
-	url = https://github.com/sethbc/fuzzyfinder_textmate.git
 [submodule "home/.vim/bundle/nerdcommenter"]
 	path = home/.vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
@@ -37,9 +34,6 @@
 [submodule "home/.vim/bundle/switch"]
 	path = home/.vim/bundle/switch
 	url = git://github.com/AndrewRadev/switch.vim.git
-[submodule "home/.vim/bundle/vim-slim"]
-	path = home/.vim/bundle/vim-slim
-	url = git@github.com:xentek/vim-slim.git
 [submodule "home/.vim/bundle/vim-gitgutter"]
 	path = home/.vim/bundle/vim-gitgutter
 	url = git://github.com/airblade/vim-gitgutter.git
@@ -55,3 +49,12 @@
 [submodule "home/.vim/bundle/vim-taglist"]
 	path = home/.vim/bundle/vim-taglist
 	url = git@github.com:vim-scripts/taglist.vim.git
+[submodule "home/.vim/bundle/ack.vim"]
+	path = home/.vim/bundle/ack.vim
+	url = git@github.com:mileszs/ack.vim.git
+[submodule "home/.vim/bundle/vim-indentobject"]
+	path = home/.vim/bundle/vim-indentobject
+	url = git@github.com:austintaylor/vim-indentobject.git
+[submodule "home/.vim/bundle/ctrlp.vim"]
+	path = home/.vim/bundle/ctrlp.vim
+	url = git@github.com:kien/ctrlp.vim.git
