@@ -43,10 +43,12 @@ au BufRead,BufNewFile *.thor   set filetype=ruby                        " Thorfi
 au BufRead,BufNewFile Gemfile set filetype=ruby                         " Gemfiles should be treated as ruby
 au BufRead,BufNewFile Guardfile set filetype=ruby                       " Guardfiles should be treated as ruby
 au BufRead,BufNewFile *.ru set filetype=ruby                            " Rackup Files should be treated as ruby
-au BufRead,BufNewFile *.jeco set filetype=erb                           " eco templates should be treated as ruby
-au BufRead,BufNewFile *.eco set filetype=erb                            " eco templates should be treated as ruby
+au BufRead,BufNewFile *.jeco set filetype=erb                           " eco templates should be treated as erb
+au BufRead,BufNewFile *.eco set filetype=erb                            " eco templates should be treated as erb
 au BufNewFile,BufReadPost *.coffee setl invlist shiftwidth=2 expandtab  " 2 space indents for coffeescript
-au BufRead,BufNewFile aliases set filetype=sh                           " aliases file should be treated as shell script
+au BufRead,BufNewFile aliases set filetype=sh                           " aliases file should be treated as shell scrip
+au BufNewFile,BufRead *.ejs set filetype=erb                            " ejs should be treated as erb
+au BufNewFile,BufRead *.jst set filetype=erb                            " ejs should be treated as erb
 
 " syntastic config
 let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
