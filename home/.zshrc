@@ -11,6 +11,8 @@
 : ${LC_ALL:="en_US.UTF-8"}
 export LANG LANGUAGE LC_CTYPE LC_ALL
 
+export SHELL=/usr/local/bin/zsh
+
 # Editor
 export EDITOR=/usr/bin/vim
 export SVN_EDITOR=/usr/bin/vim
@@ -42,7 +44,7 @@ DISABLE_AUTO_TITLE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git bundler vi-mode ssh-agent sites)
+plugins=(git bundler vi-mode ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -52,18 +54,18 @@ umask 0022 # dirs will be 775, files 664
 
 # PAGER
 if test -n "$(command -v less)" ; then
-    PAGER="less -FirSwX"
-    MANPAGER="less -FiRswX"
-    ACK_PAGER="less -FiRswX"
+  PAGER="less -FirSwX"
+  MANPAGER="less -FiRswX"
+  ACK_PAGER="less -FiRswX"
 else
-    PAGER=more
-    MANPAGER="$PAGER"
-    ACK_PAGER="$PAGER"
+  PAGER=more
+  MANPAGER="$PAGER"
+  ACK_PAGER="$PAGER"
 fi
 export PAGER MANPAGER ACK_PAGER
 
 # Ack
-export ACK_OPTIONS="--type-add js=.jst,.coffee,.ejs --type-add ruby=.haml --type-add css=.scss"
+export ACK_OPTIONS="--type-add js=.jst --type-add js=.coffee --type-add js=.ejs --type-add ruby=.haml --type-add css=.scss --type-add css=.sass"
 
 # Python
 export PYTHONSTARTUP="$HOME/.pystartup"
