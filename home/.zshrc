@@ -44,7 +44,7 @@ DISABLE_AUTO_TITLE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(history-substring-search heroku git bundler vi-mode ssh-agent)
+plugins=(history-substring-search git vi-mode ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -64,9 +64,6 @@ else
 fi
 export PAGER MANPAGER ACK_PAGER
 
-# Ack
-export ACK_OPTIONS="--type-add js=.jst --type-add js=.coffee --type-add js=.ejs --type-add ruby=.haml --type-add css=.scss --type-add css=.sass"
-
 # Python
 export PYTHONSTARTUP="$HOME/.pystartup"
 
@@ -85,5 +82,19 @@ eval "$(rbenv init -)"
 # ssh agent forwarding with oh-my-zsh
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
+#if [ -f "${HOME}/.gpg-agent-info" ]; then
+  #. "${HOME}/.gpg-agent-info"
+  #export GPG_AGENT_INFO
+  #export SSH_AUTH_SOCK
+#fi
+
 # bump up ulimit
 ulimit -n 1024
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# bundler
+alias be="bundle exec"
+alias bi="bundle install"
+alias bu="bundle update"

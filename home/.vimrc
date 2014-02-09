@@ -31,7 +31,7 @@ set statusline=%f\ %m\ %r               " status line tweaks
 set statusline+=Line:\ %l/%L            " show line numbers: current/total
 set statusline+=\ \|\ Col:\ %v          " show column number
 set shell=/usr/local/bin/zsh            " Use zsh for shell commands
-
+set textwidth=0 wrapmargin=0            " No automatic line breaks
 " UTF-8
 if has('multi_byte')
   scriptencoding utf-8
@@ -40,8 +40,8 @@ end
 
 
 " Key Mappings
-let mapleader = ","                                    " <leader> 
-let maplocalleader = "\\"                              " <localleader>
+let mapleader = ','                                    " <leader> 
+let maplocalleader = '\\'                              " <localleader>
 nnoremap - :Switch<cr>                                 " Switch.vim
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR>          " Create the directory containing the file in the buffer
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR> " find merge conflict markers
@@ -62,9 +62,11 @@ au BufNewFile,BufReadPost *.coffee setl invlist shiftwidth=2 expandtab  " 2 spac
 au BufRead,BufNewFile aliases set filetype=sh                           " aliases file should be treated as shell scrip
 au BufNewFile,BufRead *.ejs set filetype=erb                            " ejs should be treated as erb
 au BufNewFile,BufRead *.jst set filetype=erb                            " ejs should be treated as erb
+au BufNewFile,BufRead *.slim set filetype=slim                          " ejs should be treated as erb
 
 " syntastic config
 let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
+let g:syntastic_slim_checkers=['slimrb']
 
 " CTRL-P config
 let g:ctrlp_map = '<C-p>'
@@ -72,3 +74,7 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " Taglist config
 map <leader>t :TlistToggle<CR>
+
+" autocomplpopup config
+let g:acp_behaviorKeywordLength = 3
+let g:acp_behaviorKeywordIgnores = ["end"]
