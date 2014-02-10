@@ -4,7 +4,6 @@ if [[ -o interactive ]]; then
   export CLICOLOR=xterm
   alias ls="ls -F"
   alias grep="grep --color=auto -i"
-  alias wpfetch="wget http://wordpress.org/latest.tar.gz && tar xzvf ./latest.tar.gz && rm -f ./latest.tar.gz"
   alias src="source ~/.zshrc"
   
   # SVN
@@ -28,26 +27,21 @@ if [[ -o interactive ]]; then
   # Ack
   alias ack='nocorrect ack'
 
-  # Ruby and Rails
-  alias biwp='bundle install --without production'
-  alias dbmigrate='bundle exec rake db:migrate && RAILS_ENV=test bundle exec rake db:migrate'
+  # Bundler
+  alias be="bundle exec"
+  alias bi="bundle install"
+  alias bu="bundle update"
 
   if [ "$UNAME" = Darwin ]; then
     # Other OSX only aliases
     alias dbg='open /Applications/MacGDBp.app'
-    alias imsize='sips -g pixelWidth -g pixelHeight'
+    alias imgsize='sips -g pixelWidth -g pixelHeight'
 
     # DNS
     alias flushdns='dscacheutil -flushcache'
 
-    # DEV STUFF
-    alias vhosts="mate -w $PORTS/apache2/conf/vhosts"
-    alias phpini="mate -w $PORTS/etc/php5/php.ini && sudo $PORTS/apache2/bin/apachectl restart"
-
     # Stuff That's Available on Mac and Linux, but with different commands
     alias sshkey="cat $HOME/.ssh/id_rsa.pub | pbcopy"
-    alias hosts="mate /etc/hosts"
-    alias zshrc="mate -w $HOME/.zshrc && source $HOME/.zshrc"
     alias updatedb="sudo /usr/libexec/locate.updatedb"
   fi
 
