@@ -11,7 +11,7 @@ My dotfiles, organized as a [homesick](https://github.com/technicalpickles/homes
 
 ## Notes
 
-  - Feel free to fork this and customize it for your own needs, or just browse the files for 
-  - Assumes you are using ZSH and prezto (included), and rbenv.
+  - Feel free to fork this and customize it for your own needs, or just browse the files for inspiration.
+  - Assumes you are using ZSH, prezto (included), and rbenv.
   - Uses vim keybindings in the shell.
   - Should be safe for use on linux or mac.
