@@ -24,15 +24,6 @@
 [status]
 	submodule = 1
 [push]
-	# Only push branches that have been set up to track a remote branch.
 	default = current
-[user]
-	name = Eric Marden
-	email = eric@xentek.net
 [core]
-	excludesfile = /Users/xentek/.gitignore
-[github]
-	user = xentek
-	token = b7feed758c325250f141045d1b0b95cc
-[heroku]
-	account = xentek
+	excludesfile = $HOME/.gitignore
