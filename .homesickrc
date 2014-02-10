@@ -1,6 +1,4 @@
-print "Git user.name: "
-username = gets.strip
+username = self.ask "Git user.name: "
 `git config --global user.name "#{username}"`
-print "Git user.email: "
-email = gets.strip
+email = self.ask "Git user.email: "
 `git config --global user.email #{email}`
