@@ -1,0 +1,6 @@
+print "Git user.name: "
+username = gets.strip
+`git config --global user.name "#{username}"`
+print "Git user.email: "
+email = gets.strip
+`git config --global user.email #{email}`
