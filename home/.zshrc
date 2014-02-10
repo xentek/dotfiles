@@ -20,7 +20,7 @@ if [[ -s $HOME/.zsh/functions ]] ; then source $HOME/.zsh/functions ; fi
 # aliases
 if [[ -s $HOME/.zsh/aliases ]] ; then source $HOME/.zsh/aliases ; fi
 
-# localrc
+# localrc (machine specific shell config)
 if [[ -s $HOME/.localrc ]] ; then source $HOME/.localrc ; fi
 
 # rbenv
