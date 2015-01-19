@@ -12,6 +12,8 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'history-substring-search' \
+  'git' \
   'prompt'
 
 # Set the key mapping style to 'emacs' or 'vi'.
@@ -19,7 +21,7 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Git
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
-# zstyle ':prezto:module:git:status:ignore' submodules 'all'
+zstyle ':prezto:module:git:status:ignore' submodules 'all'
 
 # History Substring Search
 # Set the query found color.
