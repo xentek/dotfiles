@@ -34,3 +34,6 @@ export PYTHONSTARTUP="$HOME/.pystartup"
   #export GPG_AGENT_INFO
   #export SSH_AUTH_SOCK
 #fi
+
+# added by travis gem
+[ -f /Users/xentek/.travis/travis.sh ] && source /Users/xentek/.travis/travis.sh
