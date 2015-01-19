@@ -5,7 +5,6 @@ fi
 
 # Editors
 export EDITOR='vim'
-export VISUAL='mvim'
 export PAGER='less'
 
 # Language
@@ -60,3 +59,5 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
+
+export JAVA_HOME="$(/usr/libexec/java_home)"
