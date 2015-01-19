@@ -1,7 +1,7 @@
+export CLICOLOR=xterm
 if [[ -o interactive ]]; then
   alias cd..='cd ..'
   alias ..='cd ..'
-  export CLICOLOR=xterm
   alias ls="ls -F"
   alias grep="grep --color=auto -i"
   alias src="source ~/.zshrc"
