@@ -23,9 +23,6 @@ if [[ -s $HOME/.zsh/aliases ]] ; then source $HOME/.zsh/aliases ; fi
 # localrc (machine specific shell config)
 if [[ -s $HOME/.localrc ]] ; then source $HOME/.localrc ; fi
 
-# rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 # python
 export PYTHONSTARTUP="$HOME/.pystartup"
 
@@ -34,3 +31,6 @@ export PYTHONSTARTUP="$HOME/.pystartup"
   #export GPG_AGENT_INFO
   #export SSH_AUTH_SOCK
 #fi
+
+# added by travis gem
+[ -f /Users/xentek/.travis/travis.sh ] && source /Users/xentek/.travis/travis.sh
