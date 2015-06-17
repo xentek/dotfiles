@@ -27,3 +27,8 @@
 	default = current
 [core]
 	excludesfile = $HOME/.gitignore
+[heroku]
+	account = xentek
+[user]
+	name = Eric Marden
+	email = eric.marden@gmail.com
